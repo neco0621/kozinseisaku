@@ -1,21 +1,26 @@
 #pragma once
-#include "Player.h"
+#include <vector>
+#include "Vec2.h"
+
+class Player;
+
 class SceneMain
 {
 public:
-	SceneMain();	//コンストラクタ	メモリが確保されたときに呼ばれる関数
-	~SceneMain();	//デストラクタ		メモリが解放される時に呼ばれる関数
+	SceneMain();
+	virtual ~SceneMain();
 
 	void Init();
+	void End();
+
 	void Update();
-	void Draw() const;	//関数にconstを付けることでその関数の内部で
-						//メンバー変数を変更できなくなる
+	void Draw();
 
 private:
+	//グラフィックのハンドル
+	int m_playerHandle;
 
-	int m_frameCount;
 
-	Player m_player;
-
+	//プレイヤー
+	Player* m_pPlayer;
 };
-
