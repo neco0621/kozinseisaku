@@ -3,6 +3,7 @@
 #include "Vec2.h"
 
 class Player;
+class Map;
 
 class SceneMain
 {
@@ -19,8 +20,12 @@ public:
 private:
 	//グラフィックのハンドル
 	int m_playerHandle;
+	int m_mapHandle;
 
 
 	//プレイヤー
 	Player* m_pPlayer;
+
+	//マップ
+	Map* m_pMap;
 };

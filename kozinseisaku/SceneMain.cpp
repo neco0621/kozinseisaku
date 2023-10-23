@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Pad.h"
 #include "Rect.h"
+#include "Map.h"
 #include <cassert>
 
 namespace
@@ -21,9 +22,15 @@ SceneMain::SceneMain()
 	//グラフィックのロード
 	m_playerHandle = LoadGraph(L"data/player.png");
 	assert(m_playerHandle != -1);
+	m_mapHandle = LoadGraph(L"data/map.png");
+	assert(m_playerHandle != -1);
 	//プレイヤーのメモリ確保
 	m_pPlayer = new Player{ this };
 	m_pPlayer->SetHandle(m_playerHandle);	//Playerにグラフィックハンドルを渡す
+
+	//マップのメモリ確保
+	m_pMap = new Map;
+	m_pMap->SetHandle(m_mapHandle);
 }
 
 SceneMain::~SceneMain()
@@ -35,6 +42,10 @@ SceneMain::~SceneMain()
 	//プレイヤーのメモリ解放
 	delete m_pPlayer;
 	m_pPlayer = nullptr;
+
+	//マップのメモリ開放
+	delete m_pMap;
+	m_pMap = nullptr;
 }
 
 void SceneMain::Init()
@@ -42,6 +53,7 @@ void SceneMain::Init()
 	assert(m_pPlayer);	//m_pPlayer == nullptr の場合止まる
 
 	m_pPlayer->Init();
+	m_pMap->Init();
 }
 
 void SceneMain::End()
@@ -52,7 +64,7 @@ void SceneMain::End()
 void SceneMain::Update()
 {
 	m_pPlayer->Update();
-
+	m_pMap->Update();
 
 	Rect playerRect = m_pPlayer->GetColRect();
 }
@@ -60,4 +72,5 @@ void SceneMain::Update()
 void SceneMain::Draw()
 {
 	m_pPlayer->Draw();
+	m_pMap->Draw();
 }
