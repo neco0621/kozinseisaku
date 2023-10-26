@@ -20,7 +20,7 @@ namespace
 Player::Player(SceneMain* pMain) :
 	m_pMain(pMain),
 	m_handle(-1),
-	m_pos(Game::kScreenWidth / 2, Game::kScreenHeight / 2)
+	m_pos(Game::kScreenWidth / 2, Game::kScreenHeight - 50)
 {
 }
 

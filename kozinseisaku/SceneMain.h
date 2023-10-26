@@ -3,7 +3,7 @@
 #include "Vec2.h"
 
 class Player;
-class Map;
+class EnemyBase;
 
 class SceneMain
 {
@@ -18,14 +18,21 @@ public:
 	void Draw();
 
 private:
+	//敵キャラクターの生成
+	void CreateEnemyLeft();
+
+private:
 	//グラフィックのハンドル
 	int m_playerHandle;
-	int m_mapHandle;
+	int m_enemyHandle;
 
 
 	//プレイヤー
 	Player* m_pPlayer;
+	//敵
+	std::vector<EnemyBase> m_pEnemy;
 
-	//マップ
-	Map* m_pMap;
+	//敵の登場間隔
+	int m_enemyInterval;
+	
 };
